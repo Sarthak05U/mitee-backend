@@ -15,7 +15,7 @@ app.use(bodyParser.json()); // Parses incoming JSON requests
 
 // Mount Routes
 // This maps both GET and POST requests to /api/transactions
-app.use('/api/transactions', transactionRoutes);
+app.use('/transactions', transactionRoutes);
 
 // Simple Base Route (To check if server is alive in browser)
 app.get('/', (req, res) => {
