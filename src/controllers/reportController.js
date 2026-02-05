@@ -44,8 +44,8 @@ const downloadExcelReport = async (req, res) => {
         ];
         clientStats.forEach(row => {
             clientSheet.addRow({ 
-                name: row.client_name, 
-                count: row.total_transactions, 
+                name: row.name, 
+                count: row.transaction_count, 
                 amount: row.total_spent 
             });
         });
@@ -59,8 +59,8 @@ const downloadExcelReport = async (req, res) => {
         ];
         agencyStats.forEach(row => {
             agencySheet.addRow({ 
-                name: row.agency_name, 
-                count: row.total_transactions, 
+                name: row.name, 
+                count: row.transaction_count, 
                 amount: row.total_earned 
             });
         });
