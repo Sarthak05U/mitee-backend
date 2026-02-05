@@ -61,7 +61,7 @@ const downloadExcelReport = async (req, res) => {
             agencySheet.addRow({ 
                 name: row.name, 
                 count: row.transaction_count, 
-                amount: row.total_earned 
+                amount: row.total_received 
             });
         });
 
