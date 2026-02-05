@@ -64,10 +64,17 @@ const downloadExcelReport = async (req, res) => {
                 amount: row.total_received 
             });
         });
-
+        const today = new Date();
+        // Creates "05-02-2026"
+        const dateStr = new Date().toLocaleDateString('en-GB').split('/').join('-');
+        
+        // 4. Create Dynamic Filename
+        const fileName = `Mitee_Ledger_Report_${dateStr}.xlsx`;
         // Send File
-        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        res.setHeader('Content-Disposition', 'attachment; filename=Mitee_Ledger_Report.xlsx');
+       res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        
+        // ✅ FIXED: Using the dynamic fileName variable here
+        res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
 
         await workbook.xlsx.write(res);
         res.end();
